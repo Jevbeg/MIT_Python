@@ -26,9 +26,12 @@ quit_command = 0
 
 while True :
     print(indic)
+    
     indic += 1
+    
     for counter in serCon.read_until(b'0') :
         data.append(counter)
+        
     dataline = str(bytes(data))
     data.clear()
     serCon.reset_input_buffer()
