@@ -8,35 +8,38 @@ Created on Mon Jun 17 23:38:21 2019
 import serial
 #import time
 
-ser2 = serial.Serial(None)
+serCon = serial.Serial(None)
 
-ser2.port = 'COM2'
+serCon.port = 'COM2'
 
-ser2.baudrate = 19200
-ser2.timeout = None
+indic = 1
 
-
-print(ser2.is_open)
-if not ser2.is_open : 
-    ser2.open()
+serCon.baudrate = 19200
+serCon.timeout = None
+print(serCon.is_open)
+if not serCon.is_open : 
+    serCon.open()
 
 data = []
 dataline = ''
 quit_command = 0
 
 while True :
-    print('line1')
-    for counter in ser2.read_until(b'0') :
+    print(indic)
+    indic += 1
+    for counter in serCon.read_until(b'0') :
         data.append(counter)
     dataline = str(bytes(data))
     data.clear()
-    ser2.reset_input_buffer()
+    serCon.reset_input_buffer()
     print(dataline)
-    #quit_command = int(ser2.read(1))
-    print('line2')
-    ser2.write(b'Are you still there?')
-    print('line3')
-ser2.close()
+    #quit_command = int(serCon.read(1))
+    print(indic)
+    indic += 1
+    serCon.write(b'Are you still there?')
+    print(indic)
+    indic += 1
+serCon.close()
 print('done')
     
 
