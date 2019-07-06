@@ -6,11 +6,27 @@ Created on Sun Jun 16 00:07:33 2019
 """
 import serial
 import time
+import random
 
-#class stateLine:
+
+class stateLine:
+    """Class holds the current state of the line"""
+    cikle = 0   # This must be saved for both compression cycle
+
+    def __init__(self):
+        self.pp = None
+        self.oil = None
+        self.gas = None
+        self.tInt = None
+        self.t1 = None 
+        self.gs = None
+        self.time = 0 
     
+    def genLine(self):
+        
 
-#def genLine()
+#def genLine():
+    
     
 
 
@@ -29,7 +45,7 @@ fl = open("example.txt", "r")
 
 line = ""
 
-for i in range(30):
+for i in range(10):
 
     line = fl.readline()
     print(line)
