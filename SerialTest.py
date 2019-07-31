@@ -9,21 +9,7 @@ import time
 import random
 
 
-class stateLine:
-    """Class holds the current state of the line"""
-    cikle = 0   # This must be saved for both compression cycle
 
-    def __init__(self):
-        self.pp = None
-        self.oil = None
-        self.gas = None
-        self.tInt = None
-        self.t1 = None 
-        self.gs = None
-        self.time = 0 
-    
-    def genLine(self):
-        
 
 #def genLine():
     
