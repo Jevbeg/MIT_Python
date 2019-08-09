@@ -8,7 +8,7 @@ Created on Wed Jul 24 23:59:36 2019
 import random
 
 class stateLine:
-    """Contains the state state of line to be sent to the console."""
+    """Contains the state of line to be sent to the console."""
     
     DEFAULT_MODE = '#O'
     DEFAULT_CYCLE = 1
@@ -71,7 +71,12 @@ class stateLine:
         """Generates the line for the console in a new mode or continuation"""
         """Uses stateLine.dataLine() for reference"""
         if self.start : 
-            generatedLine = str(self.mode).encode('ASCII') + b'\t' + \
+#            generatedLine = str(self.mode).encode('ASCII') + b'\t' + \
+#                            str(self.cycle).encode('ASCII') + \
+#                            b' '*12 + \
+#                            self.dataLine()
+            generatedLine = b'\n' + b'\r' + \
+                            str(self.mode).encode('ASCII') + b'\t' + \
                             str(self.cycle).encode('ASCII') + \
                             b' '*12 + \
                             self.dataLine()
@@ -92,7 +97,8 @@ class stateLine:
         self.cycle = stateLineObject.cycle
         self.pPressure = stateLineObject.pPressure
         self.oilPressure = self.DEFAULT_OILPRESSURE
-        self.gasPressure = stateLineObject.gasPressure
+        self.gasPressure = stateLineObject.oilPressure
+        
         self.tInt = stateLineObject.tInt
         self.t1 = stateLineObject.t1
         self.gs = stateLineObject.gs

@@ -19,11 +19,18 @@ serCon.port = 'COM2'
 serCon.open()
 
 print(serCon.is_open)
-                                 
-for i in range(500):
+
+for i in range(50):
     serCon.write(modeOne.generateLine())
     time.sleep(.2)
+
+modeTwo.continueFrom(modeOne)
+
+for i in range(50):
+    serCon.write(modeTwo.generateLine())
+    time.sleep(.2)
     
+serCon.close()
                                 
                                  
 
