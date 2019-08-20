@@ -12,25 +12,37 @@ import serial
 modeOne = hygen_module.stateLine('#1')
 modeTwo = hygen_module.stateLine('#2')
 
-serCon = serial.Serial(None)
-serCon.port = 'COM2'
+serCon1 = serial.Serial(None)
+serCon1.port = 'COM1'
+serCon3 = serial.Serial(None)
+serCon3.port = 'COM3'
+
+serCon1.open()
+serCon3.open()
 
 
-serCon.open()
 
-print(serCon.is_open)
+print(serCon1.is_open)
+print(serCon3.is_open)
 
 for i in range(50):
-    serCon.write(modeOne.generateLine())
+    
+    gLine = modeOne.generateLine()
+    
+    serCon1.write(gLine)
+    serCon3.write(gLine)
+    
     time.sleep(.2)
 
 modeTwo.continueFrom(modeOne)
 
 for i in range(50):
-    serCon.write(modeTwo.generateLine())
+    gLine = modeTwo.generateLine()
+    serCon1.write(gLine)
     time.sleep(.2)
     
-serCon.close()
+serCon1.close()
+serCon3.close() 
                                 
                                  
 

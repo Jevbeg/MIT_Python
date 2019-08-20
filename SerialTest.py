@@ -10,22 +10,17 @@ import random
 
 
 
-
-#def genLine():
-    
-    
-
-
 """MAIN BODY STARTS HERE""" 
 
+#We initiate Serial class instances as empty (in case they weren't closed)
+serCon1 = serial.Serial(None)
+serCon3 = serial.Serial(None)
 
-serCon = serial.Serial(None)
-#serCon.write(b'sdgdfhfghfgj')
-serCon.port = 'COM2'
-print(serCon.name)
-serCon.open()
-print(serCon.is_open)
-"""serCon.open()""" 
+serCon1.port = 'COM1'
+serCon3.port = 'COM3'
+
+serCon1.open()
+serCon3.open()
 
 fl = open("example.txt", "r")
 
@@ -39,12 +34,12 @@ for i in range(10):
     if ('#1' in line) or ('#2' in line):
         line = line[0:(len(line)-1)]
         
-        serCon.write(line.encode('ascii'))
-        serCon.write(b'\r')
+        serCon1.write(line.encode('ascii'))
+        serCon1.write(b'\r')
         time.sleep(1)
     else :
-        serCon.write(line.encode('ascii'))
-        serCon.write(b'\r')
+        serCon1.write(line.encode('ascii'))
+        serCon1.write(b'\r')
     
     
     
@@ -52,27 +47,33 @@ for i in range(10):
 
 fl.close()
 
-serCon.write(b'once again')
-serCon.write(b'\n')
+serCon1.write(b'once again')
+serCon1.write(b'\n')
 
 txtInASCII = ''
 
 
-print(serCon.is_open)
+serCon1.close()
+serCon3.close()
 
-serCon.close()
+
+
+
+
+
+
 
 """ ---------------Code chunks-------------------------
-print(serCon.name)
-serCon.write('well, hi there')
-serCon.close()
+print(serCon1.name)
+serCon1.write('well, hi there')
+serCon1.close()
 
 for i in range(10):
        
     txtInASCII = str(i) + '\r' + '\n'
 
     time.sleep(1)
-    serCon.write(txtInASCII.encode("ASCII", "ignore"))
+    serCon1.write(txtInASCII.encode("ASCII", "ignore"))
 
 
 

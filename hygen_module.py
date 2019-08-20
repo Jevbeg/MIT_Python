@@ -93,12 +93,10 @@ class stateLine:
     def continueFrom(self, stateLineObject) :
         """Is required for the mode to begin operation after switch"""
         self.start = self.DEFAULT_START
-        
         self.cycle = stateLineObject.cycle
         self.pPressure = stateLineObject.pPressure
         self.oilPressure = self.DEFAULT_OILPRESSURE
         self.gasPressure = stateLineObject.oilPressure
-        
         self.tInt = stateLineObject.tInt
         self.t1 = stateLineObject.t1
         self.gs = stateLineObject.gs
