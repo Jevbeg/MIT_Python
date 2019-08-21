@@ -14,13 +14,15 @@ modeTwo = hygen_module.stateLine('#2')
 
 serCon1 = serial.Serial(None)
 serCon1.port = 'COM1'
+
 serCon3 = serial.Serial(None)
 serCon3.port = 'COM3'
 
 serCon1.open()
 serCon3.open()
 
-
+serCon1.baudrate = 19200
+serCon3.baudrate = 19200
 
 print(serCon1.is_open)
 print(serCon3.is_open)
@@ -32,14 +34,14 @@ for i in range(50):
     serCon1.write(gLine)
     serCon3.write(gLine)
     
-    time.sleep(.2)
+    time.sleep(0.1)
 
 modeTwo.continueFrom(modeOne)
 
-for i in range(50):
+for i in range(100):
     gLine = modeTwo.generateLine()
     serCon1.write(gLine)
-    time.sleep(.2)
+    time.sleep(0.1)
     
 serCon1.close()
 serCon3.close() 

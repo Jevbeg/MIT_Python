@@ -20,10 +20,35 @@ print(serCon.is_open)
 if not serCon.is_open : 
     serCon.open()
 
-data = []
-dataline = ''
-quit_command = 0
 
+
+for i in range(5) :
+    a = (serCon.read_until(terminator = b'\r').decode("UTF-8"))
+    print(a)
+    
+    
+    #serCon.flushInput()
+    #for counter in serCon.read_until(b'0') :
+     
+        
+
+    
+    
+    
+serCon.close()
+print('done')
+
+
+
+
+
+
+
+
+
+
+
+"""
 while True :
     print(indic)
     
@@ -44,5 +69,7 @@ while True :
     indic += 1
 serCon.close()
 print('done')
+
+"""
     
 

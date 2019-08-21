@@ -15,13 +15,13 @@ import random
 #We initiate Serial class instances as empty (in case they weren't closed)
 serCon1 = serial.Serial(None)
 serCon3 = serial.Serial(None)
-
+#Change ports to the  target ones.
 serCon1.port = 'COM1'
 serCon3.port = 'COM3'
-
+#Open ports.
 serCon1.open()
 serCon3.open()
-
+#Open file 
 fl = open("example.txt", "r")
 
 line = ""

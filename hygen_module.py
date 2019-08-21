@@ -20,7 +20,7 @@ class stateLine:
     DEFAULT_GS = 2
     DEFAULT_TIME = 0
     DEFAULT_START = True
-    MAX_TIME = 300
+    MAX_TIME = 999
     
         
     def __init__(self, getMode = None):
