@@ -17,16 +17,19 @@ indic = 1
 serCon.baudrate = 19200
 serCon.timeout = None
 print(serCon.is_open)
-if not serCon.is_open : 
+
+if not serCon.is_open :
     serCon.open()
 
 
-
-for i in range(5) :
-    a = (serCon.read_until(terminator = b'\r').decode("UTF-8"))
-    print(a)
-    
-    
+try :
+    while True :
+        receivedLine = (serCon.read_until(terminator = b'\r').decode("UTF-8"))
+        print(receivedLine)
+except KeyboardInterrupt :
+    serCon.close()
+    pass
+        
     #serCon.flushInput()
     #for counter in serCon.read_until(b'0') :
      

@@ -27,24 +27,33 @@ serCon3.baudrate = 19200
 print(serCon1.is_open)
 print(serCon3.is_open)
 
-for i in range(50):
-    
-    gLine = modeOne.generateLine()
-    
-    serCon1.write(gLine)
-    serCon3.write(gLine)
-    
-    time.sleep(0.1)
-
-modeTwo.continueFrom(modeOne)
-
-for i in range(100):
-    gLine = modeTwo.generateLine()
-    serCon1.write(gLine)
-    time.sleep(0.1)
-    
-serCon1.close()
-serCon3.close() 
+while True:
+    try: 
+        for i in range(500):
+            
+            gLine = modeOne.generateLine()
+            
+            serCon1.write(gLine)
+            serCon3.write(gLine)
+            
+            time.sleep(1)
+        
+#        modeTwo.continueFrom(modeOne)
+        
+#        for i in range(100):
+#            gLine = modeTwo.generateLine()
+#            serCon1.write(gLine)
+#            time.sleep(0.5)
+        
+    except KeyboardInterrupt:
+        print('Manually interrupted')
+        serCon1.close()
+        serCon3.close() 
+        
+try:        
+    serCon1.close()
+    serCon3.close() 
+except SerialException: pass
                                 
                                  
 
