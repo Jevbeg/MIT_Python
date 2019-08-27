@@ -6,7 +6,13 @@ Created on Mon Jun 17 23:38:21 2019
 """
 
 import serial
-#import time
+import time
+import matplotlib.pyplot as plt
+
+
+
+
+
 
 serCon = serial.Serial(None)
 
@@ -16,7 +22,12 @@ indic = 1
 
 serCon.baudrate = 19200
 serCon.timeout = None
+
+filename = time.strftime("%Y%m%d_%H%M", time.localtime())
+logFile = open("{}.txt".format(filename), "w")
+
 print(serCon.is_open)
+
 
 if not serCon.is_open :
     serCon.open()
@@ -26,8 +37,14 @@ try :
     while True :
         receivedLine = (serCon.read_until(terminator = b'\r').decode("UTF-8"))
         print(receivedLine)
+        print(receivedLine[1 : (len(receivedLine)-1)])
+        print(receivedLine.split("\t"))
+        print(receivedLine[1 : (len(receivedLine)-1)].split("\t"))
+        logFile.writelines(receivedLine)
+        plt.
 except KeyboardInterrupt :
     serCon.close()
+    logFile.close()
     pass
         
     #serCon.flushInput()

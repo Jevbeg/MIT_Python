@@ -50,10 +50,7 @@ while True:
         serCon1.close()
         serCon3.close() 
         
-try:        
-    serCon1.close()
-    serCon3.close() 
-except SerialException: pass
+
                                 
                                  
 
