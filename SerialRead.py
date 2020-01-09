@@ -10,13 +10,9 @@ import time
 import matplotlib.pyplot as plt
 
 
-
-
-
-
 serCon = serial.Serial(None)
 
-serCon.port = 'COM2'
+serCon.port = 'COM4'
 
 indic = 1
 
@@ -41,7 +37,7 @@ try :
         print(receivedLine.split("\t"))
         print(receivedLine[1 : (len(receivedLine)-1)].split("\t"))
         logFile.writelines(receivedLine)
-        plt.
+
 except KeyboardInterrupt :
     serCon.close()
     logFile.close()
@@ -53,8 +49,7 @@ except KeyboardInterrupt :
         
 
     
-    
-    
+      
 serCon.close()
 print('done')
 
