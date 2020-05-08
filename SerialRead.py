@@ -9,12 +9,13 @@ import serial
 import time
 import matplotlib.pyplot as plt
 
+def split_()
 
 serCon = serial.Serial(None)
 
 serCon.port = 'COM4'
 
-indic = 1
+#indic = 1
 
 serCon.baudrate = 19200
 serCon.timeout = None
@@ -31,11 +32,13 @@ if not serCon.is_open :
 
 try :
     while True :
+        
+        if 
         receivedLine = (serCon.read_until(terminator = b'\r').decode("UTF-8"))
         print(receivedLine)
-        print(receivedLine[1 : (len(receivedLine)-1)])
+        print(receivedLine[0 : (len(receivedLine)-1)])
         print(receivedLine.split("\t"))
-        print(receivedLine[1 : (len(receivedLine)-1)].split("\t"))
+        print(receivedLine[0 : (len(receivedLine)-1)].split("\t"))
         logFile.writelines(receivedLine)
 
 except KeyboardInterrupt :
@@ -45,20 +48,9 @@ except KeyboardInterrupt :
         
     #serCon.flushInput()
     #for counter in serCon.read_until(b'0') :
-     
-        
-
-    
-      
+          
 serCon.close()
 print('done')
-
-
-
-
-
-
-
 
 
 
