@@ -22,7 +22,7 @@ init_temp = 40
 
 def read_temp(old_temp):
     
-    new_temp = old_temp + randint(-1, 1)
+    new_temp = old_temp + randint(-5, 5)
     
     return new_temp
     

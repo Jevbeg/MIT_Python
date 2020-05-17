@@ -9,7 +9,7 @@ import serial
 import time
 import matplotlib.pyplot as plt
 
-def split_()
+
 
 serCon = serial.Serial(None)
 
@@ -33,7 +33,6 @@ if not serCon.is_open :
 try :
     while True :
         
-        if 
         receivedLine = (serCon.read_until(terminator = b'\r').decode("UTF-8"))
         print(receivedLine)
         print(receivedLine[0 : (len(receivedLine)-1)])
